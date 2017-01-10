@@ -6,6 +6,7 @@ class ProfilesController < ApplicationController
   end
 
   def show
+    @profiledetail = Profiledetail.new
     @profile = Profile.find(params[:id])
 
     render("profiles/show.html.erb")

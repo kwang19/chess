@@ -57,6 +57,53 @@
           </div>
         </li>
       <% end %>
+
+      <li class="list-group-item">
+        <form action="/create_profiledetail" method="post" enctype="multipart/form-data">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for profiles_id -->
+      <div class="form-group">
+        <label for="profiles_id" class="control-label">
+          Profiles
+        </label>
+
+        <%= select_tag(:profiles_id, options_from_collection_for_select(Profile.all, :id, :summary), :class => "form-control") %>
+      </div>
+
+      <!-- Label and input for photo -->
+      <div class="form-group">
+        <label for="photo" class="control-label">
+          Photo
+        </label>
+
+        <input type="file" id="photo" name="photo" class="form-control">
+      </div>
+
+      <!-- Label and input for events -->
+      <div class="form-group">
+        <label for="events" class="control-label">
+          Events
+        </label>
+
+        <input type="text" id="events" name="events" placeholder="Events" class="form-control" value="">
+      </div>
+
+      <!-- Label and input for comment -->
+      <div class="form-group">
+        <label for="comment" class="control-label">
+          Comment
+        </label>
+
+        <input type="text" id="comment" name="comment" placeholder="Comment" class="form-control" value="">
+      </div>
+
+      <button class="btn btn-block btn-success">
+        Create Profiledetail
+      </button>
+    </form>
+      </li>
     </ul>
   </div>
 </div>

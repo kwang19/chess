@@ -6,6 +6,7 @@ class ChessplayersController < ApplicationController
   end
 
   def show
+    @comment = Comment.new
     @chessplayer = Chessplayer.find(params[:id])
 
     render("chessplayers/show.html.erb")
