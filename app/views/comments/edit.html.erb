@@ -33,7 +33,7 @@
           Chessplayer
         </label>
 
-        <input type="text" id="chessplayer_id" name="chessplayer_id" placeholder="Chessplayer" class="form-control" value="<%= @comment.chessplayer_id %>">
+        <%= select_tag(:chessplayer_id, options_from_collection_for_select(Chessplayer.all, :id, :id, @comment.chessplayer_id), :class => "form-control") %>
       </div>
 
       <button class="btn btn-warning">
