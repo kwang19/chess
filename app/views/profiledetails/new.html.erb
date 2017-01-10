@@ -1,0 +1,64 @@
+<!-- Validation failure messages -->
+<% if @profiledetail.errors.any? %>
+  <% @profiledetail.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Add Profiledetail</h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/create_profiledetail" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for profiles_id -->
+      <div class="form-group">
+        <label for="profiles_id" class="control-label">
+          Profiles
+        </label>
+
+        <input type="text" id="profiles_id" name="profiles_id" placeholder="Profiles" class="form-control" value="<%= @profiledetail.profiles_id %>">
+      </div>
+
+      <!-- Label and input for photo -->
+      <div class="form-group">
+        <label for="photo" class="control-label">
+          Photo
+        </label>
+
+        <input type="text" id="photo" name="photo" placeholder="Photo" class="form-control" value="<%= @profiledetail.photo %>">
+      </div>
+
+      <!-- Label and input for events -->
+      <div class="form-group">
+        <label for="events" class="control-label">
+          Events
+        </label>
+
+        <input type="text" id="events" name="events" placeholder="Events" class="form-control" value="<%= @profiledetail.events %>">
+      </div>
+
+      <!-- Label and input for comment -->
+      <div class="form-group">
+        <label for="comment" class="control-label">
+          Comment
+        </label>
+
+        <input type="text" id="comment" name="comment" placeholder="Comment" class="form-control" value="<%= @profiledetail.comment %>">
+      </div>
+
+      <button class="btn btn-success">
+        Create Profiledetail
+      </button>
+      or
+      <a href="/profiledetails">Cancel</a>
+    </form>
+  </div>
+</div>

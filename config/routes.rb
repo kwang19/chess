@@ -1,4 +1,21 @@
 Rails.application.routes.draw do
+  # Routes for the Profiledetail resource:
+  # CREATE
+  get "/profiledetails/new", :controller => "profiledetails", :action => "new"
+  post "/create_profiledetail", :controller => "profiledetails", :action => "create"
+
+  # READ
+  get "/profiledetails", :controller => "profiledetails", :action => "index"
+  get "/profiledetails/:id", :controller => "profiledetails", :action => "show"
+
+  # UPDATE
+  get "/profiledetails/:id/edit", :controller => "profiledetails", :action => "edit"
+  post "/update_profiledetail/:id", :controller => "profiledetails", :action => "update"
+
+  # DELETE
+  get "/delete_profiledetail/:id", :controller => "profiledetails", :action => "destroy"
+  #------------------------------
+
   # Routes for the Profile resource:
   # CREATE
   get "/profiles/new", :controller => "profiles", :action => "new"
