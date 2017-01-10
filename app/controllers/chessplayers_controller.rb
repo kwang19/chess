@@ -1,6 +1,6 @@
 class ChessplayersController < ApplicationController
   def index
-    @chessplayers = Chessplayer.all
+    @chessplayers = Chessplayer.page(params[:page]).per(10)
 
     render("chessplayers/index.html.erb")
   end

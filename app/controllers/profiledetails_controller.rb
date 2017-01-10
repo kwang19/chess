@@ -1,6 +1,6 @@
 class ProfiledetailsController < ApplicationController
   def index
-    @profiledetails = Profiledetail.all
+    @profiledetails = Profiledetail.page(params[:page]).per(10)
 
     render("profiledetails/index.html.erb")
   end
