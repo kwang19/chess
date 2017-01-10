@@ -1,0 +1,50 @@
+<div class="page-header">
+  <h1>
+    Chessplayers
+    <a href="/chessplayers/new" class="btn btn-lg btn-success">New Chessplayer</a>
+  </h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>User</th>
+        <th>First name</th>
+        <th>Last name</th>
+        <th>Dob</th>
+        <th>Gender</th>
+        <th>Uscf</th>
+        <th>Uscf title</th>
+        <th>Uscf rating</th>
+        <th>Fide</th>
+        <th>Fide title</th>
+        <th>Fide rating</th>
+        <th>Federation</th>
+        <th>Actions</th>
+      </tr>
+
+      <% @chessplayers.each do |chessplayer| %>
+      <tr>
+        <td><%= chessplayer.user_id %></td>
+        <td><%= chessplayer.first_name %></td>
+        <td><%= chessplayer.last_name %></td>
+        <td><%= chessplayer.dob %></td>
+        <td><%= chessplayer.gender %></td>
+        <td><%= chessplayer.uscf_id %></td>
+        <td><%= chessplayer.uscf_title %></td>
+        <td><%= chessplayer.uscf_rating %></td>
+        <td><%= chessplayer.fide_id %></td>
+        <td><%= chessplayer.fide_title %></td>
+        <td><%= chessplayer.fide_rating %></td>
+        <td><%= chessplayer.federation %></td>
+        <td>
+          <a href="/chessplayers/<%= chessplayer.id %>" class="btn btn-primary">Show</a>
+          <a href="/chessplayers/<%= chessplayer.id %>/edit" class="btn btn-warning">Edit</a>
+          <a href="/delete_chessplayer/<%= chessplayer.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

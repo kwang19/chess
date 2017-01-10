@@ -1,0 +1,136 @@
+<!-- Validation failure messages -->
+<% if @chessplayer.errors.any? %>
+  <% @chessplayer.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Edit Chessplayer #<%= @chessplayer.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/update_chessplayer/<%= @chessplayer.id %>" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for user_id -->
+      <div class="form-group">
+        <label for="user_id" class="control-label">
+          User
+        </label>
+
+        <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @chessplayer.user_id %>">
+      </div>
+
+      <!-- Label and input for first_name -->
+      <div class="form-group">
+        <label for="first_name" class="control-label">
+          First name
+        </label>
+
+        <input type="text" id="first_name" name="first_name" placeholder="First name" class="form-control" value="<%= @chessplayer.first_name %>">
+      </div>
+
+      <!-- Label and input for last_name -->
+      <div class="form-group">
+        <label for="last_name" class="control-label">
+          Last name
+        </label>
+
+        <input type="text" id="last_name" name="last_name" placeholder="Last name" class="form-control" value="<%= @chessplayer.last_name %>">
+      </div>
+
+      <!-- Label and input for dob -->
+      <div class="form-group">
+        <label for="dob" class="control-label">
+          Dob
+        </label>
+
+        <input type="text" id="dob" name="dob" placeholder="Dob" class="form-control" value="<%= @chessplayer.dob %>">
+      </div>
+
+      <!-- Label and input for gender -->
+      <div class="form-group">
+        <label for="gender" class="control-label">
+          Gender
+        </label>
+
+        <input type="text" id="gender" name="gender" placeholder="Gender" class="form-control" value="<%= @chessplayer.gender %>">
+      </div>
+
+      <!-- Label and input for uscf_id -->
+      <div class="form-group">
+        <label for="uscf_id" class="control-label">
+          Uscf
+        </label>
+
+        <input type="text" id="uscf_id" name="uscf_id" placeholder="Uscf" class="form-control" value="<%= @chessplayer.uscf_id %>">
+      </div>
+
+      <!-- Label and input for uscf_title -->
+      <div class="form-group">
+        <label for="uscf_title" class="control-label">
+          Uscf title
+        </label>
+
+        <input type="text" id="uscf_title" name="uscf_title" placeholder="Uscf title" class="form-control" value="<%= @chessplayer.uscf_title %>">
+      </div>
+
+      <!-- Label and input for uscf_rating -->
+      <div class="form-group">
+        <label for="uscf_rating" class="control-label">
+          Uscf rating
+        </label>
+
+        <input type="text" id="uscf_rating" name="uscf_rating" placeholder="Uscf rating" class="form-control" value="<%= @chessplayer.uscf_rating %>">
+      </div>
+
+      <!-- Label and input for fide_id -->
+      <div class="form-group">
+        <label for="fide_id" class="control-label">
+          Fide
+        </label>
+
+        <input type="text" id="fide_id" name="fide_id" placeholder="Fide" class="form-control" value="<%= @chessplayer.fide_id %>">
+      </div>
+
+      <!-- Label and input for fide_title -->
+      <div class="form-group">
+        <label for="fide_title" class="control-label">
+          Fide title
+        </label>
+
+        <input type="text" id="fide_title" name="fide_title" placeholder="Fide title" class="form-control" value="<%= @chessplayer.fide_title %>">
+      </div>
+
+      <!-- Label and input for fide_rating -->
+      <div class="form-group">
+        <label for="fide_rating" class="control-label">
+          Fide rating
+        </label>
+
+        <input type="text" id="fide_rating" name="fide_rating" placeholder="Fide rating" class="form-control" value="<%= @chessplayer.fide_rating %>">
+      </div>
+
+      <!-- Label and input for federation -->
+      <div class="form-group">
+        <label for="federation" class="control-label">
+          Federation
+        </label>
+
+        <input type="text" id="federation" name="federation" placeholder="Federation" class="form-control" value="<%= @chessplayer.federation %>">
+      </div>
+
+      <button class="btn btn-warning">
+        Update Chessplayer
+      </button>
+      or
+      <a href="/chessplayers/<%= @chessplayer.id %>">Cancel</a>
+    </form>
+  </div>
+</div>

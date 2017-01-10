@@ -1,0 +1,58 @@
+<div class="page-header">
+  <h3>Chessplayer #<%= @chessplayer.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12 mb-2">
+    <dl class="dl-horizontal">
+      <dt>User</dt>
+      <dd><%= @chessplayer.user_id %></dd>
+
+      <dt>First name</dt>
+      <dd><%= @chessplayer.first_name %></dd>
+
+      <dt>Last name</dt>
+      <dd><%= @chessplayer.last_name %></dd>
+
+      <dt>Dob</dt>
+      <dd><%= @chessplayer.dob %></dd>
+
+      <dt>Gender</dt>
+      <dd><%= @chessplayer.gender %></dd>
+
+      <dt>Uscf</dt>
+      <dd><%= @chessplayer.uscf_id %></dd>
+
+      <dt>Uscf title</dt>
+      <dd><%= @chessplayer.uscf_title %></dd>
+
+      <dt>Uscf rating</dt>
+      <dd><%= @chessplayer.uscf_rating %></dd>
+
+      <dt>Fide</dt>
+      <dd><%= @chessplayer.fide_id %></dd>
+
+      <dt>Fide title</dt>
+      <dd><%= @chessplayer.fide_title %></dd>
+
+      <dt>Fide rating</dt>
+      <dd><%= @chessplayer.fide_rating %></dd>
+
+      <dt>Federation</dt>
+      <dd><%= @chessplayer.federation %></dd>
+
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+      <a href="/chessplayers" class="btn btn-primary">
+        Back
+      </a>
+      <a href="/chessplayers/<%= @chessplayer.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <a href="/delete_chessplayer/<%= @chessplayer.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
+    </div>
+  </div>
+</div>
