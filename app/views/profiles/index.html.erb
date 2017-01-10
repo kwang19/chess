@@ -17,7 +17,13 @@
 
       <% @profiles.each do |profile| %>
       <tr>
-        <td><%= profile.users.id %></td>
+        <td>
+          <% if profile.users.present? %>
+            <a href="/chessplayers/<%= profile.users.id %>">
+              <%= profile.users.id %>
+            </a>
+          <% end %>
+        </td>
         <td><img src='<%= profile.profile_photo %>' class='img-responsive'></td>
         <td><%= profile.summary %></td>
         <td>

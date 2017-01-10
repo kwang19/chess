@@ -18,7 +18,13 @@
 
       <% @profiledetails.each do |profiledetail| %>
       <tr>
-        <td><%= profiledetail.profiles.summary %></td>
+        <td>
+          <% if profiledetail.profiles.present? %>
+            <a href="/profiles/<%= profiledetail.profiles.id %>">
+              <%= profiledetail.profiles.summary %>
+            </a>
+          <% end %>
+        </td>
         <td><img src='<%= profiledetail.photo %>' class='img-responsive'></td>
         <td><%= profiledetail.events %></td>
         <td><%= profiledetail.comment %></td>
