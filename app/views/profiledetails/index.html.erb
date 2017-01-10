@@ -18,7 +18,7 @@
 
       <% @profiledetails.each do |profiledetail| %>
       <tr>
-        <td><%= profiledetail.profiles_id %></td>
+        <td><%= profiledetail.profiles.summary %></td>
         <td><%= profiledetail.photo %></td>
         <td><%= profiledetail.events %></td>
         <td><%= profiledetail.comment %></td>
