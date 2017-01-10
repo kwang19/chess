@@ -1,6 +1,7 @@
 class ChessplayersController < ApplicationController
   def index
-    @chessplayers = Chessplayer.page(params[:page]).per(10)
+    @q = Chessplayer.ransack(params[:q])
+    @chessplayers = @q.result(:distinct => true).includes(:profile, :comments).page(params[:page]).per(10)
 
     render("chessplayers/index.html.erb")
   end

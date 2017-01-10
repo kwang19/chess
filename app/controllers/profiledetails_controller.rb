@@ -1,6 +1,7 @@
 class ProfiledetailsController < ApplicationController
   def index
-    @profiledetails = Profiledetail.page(params[:page]).per(10)
+    @q = Profiledetail.ransack(params[:q])
+    @profiledetails = @q.result(:distinct => true).includes(:profiles).page(params[:page]).per(10)
 
     render("profiledetails/index.html.erb")
   end
