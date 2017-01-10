@@ -24,7 +24,7 @@
           Profiles
         </label>
 
-        <input type="text" id="profiles_id" name="profiles_id" placeholder="Profiles" class="form-control" value="<%= @profiledetail.profiles_id %>">
+        <%= select_tag(:profiles_id, options_from_collection_for_select(Profile.all, :id, :summary, @profiledetail.profiles_id), :class => "form-control") %>
       </div>
 
       <!-- Label and input for photo -->
