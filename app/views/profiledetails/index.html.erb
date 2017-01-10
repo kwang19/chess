@@ -19,7 +19,7 @@
       <% @profiledetails.each do |profiledetail| %>
       <tr>
         <td><%= profiledetail.profiles.summary %></td>
-        <td><%= profiledetail.photo %></td>
+        <td><img src='<%= profiledetail.photo %>' class='img-responsive'></td>
         <td><%= profiledetail.events %></td>
         <td><%= profiledetail.comment %></td>
         <td>

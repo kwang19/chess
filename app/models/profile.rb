@@ -1,4 +1,6 @@
 class Profile < ApplicationRecord
+  mount_uploader :profile_photo, ProfilePhotoUploader
+
   # Direct associations
 
   has_many   :profiledetails,
