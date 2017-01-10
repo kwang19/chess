@@ -1,5 +1,7 @@
 ActiveAdmin.register Chessplayer do
 
+ permit_params :user_id, :first_name, :last_name, :dob, :gender, :uscf_id, :uscf_title, :uscf_rating, :fide_id, :fide_title, :fide_rating, :federation
+
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
