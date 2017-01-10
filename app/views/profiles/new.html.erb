@@ -1,0 +1,55 @@
+<!-- Validation failure messages -->
+<% if @profile.errors.any? %>
+  <% @profile.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Add Profile</h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/create_profile" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for chessplayer_id -->
+      <div class="form-group">
+        <label for="chessplayer_id" class="control-label">
+          Chessplayer
+        </label>
+
+        <input type="text" id="chessplayer_id" name="chessplayer_id" placeholder="Chessplayer" class="form-control" value="<%= @profile.chessplayer_id %>">
+      </div>
+
+      <!-- Label and input for profile_photo -->
+      <div class="form-group">
+        <label for="profile_photo" class="control-label">
+          Profile photo
+        </label>
+
+        <input type="text" id="profile_photo" name="profile_photo" placeholder="Profile photo" class="form-control" value="<%= @profile.profile_photo %>">
+      </div>
+
+      <!-- Label and input for summary -->
+      <div class="form-group">
+        <label for="summary" class="control-label">
+          Summary
+        </label>
+
+        <input type="text" id="summary" name="summary" placeholder="Summary" class="form-control" value="<%= @profile.summary %>">
+      </div>
+
+      <button class="btn btn-success">
+        Create Profile
+      </button>
+      or
+      <a href="/profiles">Cancel</a>
+    </form>
+  </div>
+</div>

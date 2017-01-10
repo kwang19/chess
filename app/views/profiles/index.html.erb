@@ -1,0 +1,32 @@
+<div class="page-header">
+  <h1>
+    Profiles
+    <a href="/profiles/new" class="btn btn-lg btn-success">New Profile</a>
+  </h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>Chessplayer</th>
+        <th>Profile photo</th>
+        <th>Summary</th>
+        <th>Actions</th>
+      </tr>
+
+      <% @profiles.each do |profile| %>
+      <tr>
+        <td><%= profile.chessplayer_id %></td>
+        <td><%= profile.profile_photo %></td>
+        <td><%= profile.summary %></td>
+        <td>
+          <a href="/profiles/<%= profile.id %>" class="btn btn-primary">Show</a>
+          <a href="/profiles/<%= profile.id %>/edit" class="btn btn-warning">Edit</a>
+          <a href="/delete_profile/<%= profile.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
