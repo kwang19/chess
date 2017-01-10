@@ -29,3 +29,34 @@
     </div>
   </div>
 </div>
+
+<!-- A Profile has many profiledetails -->
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">
+        Profiledetails
+      </li>
+
+      <% @profile.profiledetails.each do |profiledetail| %>
+        <li class="list-group-item">
+          <a href="/profiledetails/<%= profiledetail.id %>">
+            <%= profiledetail.events %>
+          </a>
+          <div class="btn-group btn-group-xs pull-right">
+            <a href="/profiledetails/<%= profiledetail.id %>" class="btn btn-primary">
+              <i class="fa fa-search-plus"></i>
+            </a>
+            <a href="/profiledetails/<%= profiledetail.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a href="/delete_profiledetail/<%= profiledetail.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
