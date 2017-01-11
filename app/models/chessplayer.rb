@@ -3,10 +3,10 @@ class Chessplayer < ApplicationRecord
 
   belongs_to :user
 
-  has_many   :comments,
+  has_one    :profile,
              :dependent => :destroy
 
-  has_one    :profile,
+  has_many   :comments,
              :dependent => :destroy
 
   # Indirect associations
