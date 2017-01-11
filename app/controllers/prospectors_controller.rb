@@ -1,4 +1,14 @@
 class ProspectorsController < ApplicationController
+  before_action :current_user_must_be_prospector_user, :only => [:edit, :update, :destroy]
+
+  def current_user_must_be_prospector_user
+    prospector = Prospector.find(params[:id])
+
+    unless current_user == prospector.user
+      redirect_to :back, :alert => "You are not authorized for that."
+    end
+  end
+
   def index
     @q = Prospector.ransack(params[:q])
     @prospectors = @q.result(:distinct => true).includes(:comments, :user).page(params[:page]).per(10)

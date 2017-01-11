@@ -89,8 +89,11 @@
         <td><%= prospector.name %></td>
         <td>
           <a href="/prospectors/<%= prospector.id %>" class="btn btn-primary">Show</a>
-          <a href="/prospectors/<%= prospector.id %>/edit" class="btn btn-warning">Edit</a>
-          <a href="/delete_prospector/<%= prospector.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+          
+          <% if current_user == prospector.user %>
+            <a href="/prospectors/<%= prospector.id %>/edit" class="btn btn-warning">Edit</a>
+            <a href="/delete_prospector/<%= prospector.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+          <% end %>
         </td>
       </tr>
       <% end %>
