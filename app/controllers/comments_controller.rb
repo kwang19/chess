@@ -1,14 +1,4 @@
 class CommentsController < ApplicationController
-  before_action :current_user_must_be_comment_user, :only => [:edit, :update, :destroy]
-
-  def current_user_must_be_comment_user
-    comment = Comment.find(params[:id])
-
-    unless current_user == comment.user
-      redirect_to :back, :alert => "You are not authorized for that."
-    end
-  end
-
   def index
     @q = Comment.ransack(params[:q])
     @comments = @q.result(:distinct => true).includes(:chessplayer, :user).page(params[:page]).per(10)
@@ -59,6 +49,8 @@ class CommentsController < ApplicationController
 
   def update
     @comment = Comment.find(params[:id])
+
+    @comment.user_id = params[:user_id]
     @comment.chessplayer_id = params[:chessplayer_id]
     @comment.content = params[:content]
 
