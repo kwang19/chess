@@ -49,8 +49,6 @@ class ProspectorsController < ApplicationController
 
   def update
     @prospector = Prospector.find(params[:id])
-
-    @prospector.user_id = params[:user_id]
     @prospector.name = params[:name]
 
     save_status = @prospector.save
