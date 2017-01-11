@@ -1,13 +1,10 @@
-class Chessplayer < ApplicationRecord
+class Prospector < ApplicationRecord
   # Direct associations
-
-  belongs_to :user
 
   has_many   :comments,
              :dependent => :destroy
 
-  has_one    :profile,
-             :dependent => :destroy
+  belongs_to :user
 
   # Indirect associations
 

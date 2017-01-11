@@ -2,6 +2,23 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   root :to => "chessplayers#index"
+  # Routes for the Prospector resource:
+  # CREATE
+  get "/prospectors/new", :controller => "prospectors", :action => "new"
+  post "/create_prospector", :controller => "prospectors", :action => "create"
+
+  # READ
+  get "/prospectors", :controller => "prospectors", :action => "index"
+  get "/prospectors/:id", :controller => "prospectors", :action => "show"
+
+  # UPDATE
+  get "/prospectors/:id/edit", :controller => "prospectors", :action => "edit"
+  post "/update_prospector/:id", :controller => "prospectors", :action => "update"
+
+  # DELETE
+  get "/delete_prospector/:id", :controller => "prospectors", :action => "destroy"
+  #------------------------------
+
   devise_for :users
   # Routes for the User resource:
   # READ

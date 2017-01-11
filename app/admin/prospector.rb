@@ -1,6 +1,6 @@
-ActiveAdmin.register Comment do
+ActiveAdmin.register Prospector do
 
- permit_params :prospector_id, :chessplayer_id, :content
+ permit_params :user_id, :name
 
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters

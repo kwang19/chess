@@ -1,5 +1,5 @@
 <div class="page-header">
-  <h3>Chessplayer #<%= @chessplayer.id %></h3>
+  <h3>Prospector #<%= @prospector.id %></h3>
 </div>
 
 <div class="row">
@@ -7,63 +7,33 @@
     <dl class="dl-horizontal">
       <dt>User</dt>
       <dd>
-        <% if @chessplayer.user.present? %>
-          <a href="/users/<%= @chessplayer.user_id %>">
-            <%= @chessplayer.user.created_at %>
+        <% if @prospector.user.present? %>
+          <a href="/users/<%= @prospector.user_id %>">
+            <%= @prospector.user.created_at %>
           </a>
         <% end %>
       </dd>
 
-      <dt>First name</dt>
-      <dd><%= @chessplayer.first_name %></dd>
-
-      <dt>Last name</dt>
-      <dd><%= @chessplayer.last_name %></dd>
-
-      <dt>Dob</dt>
-      <dd><%= @chessplayer.dob %></dd>
-
-      <dt>Gender</dt>
-      <dd><%= @chessplayer.gender %></dd>
-
-      <dt>Uscf</dt>
-      <dd><%= @chessplayer.uscf_id %></dd>
-
-      <dt>Uscf title</dt>
-      <dd><%= @chessplayer.uscf_title %></dd>
-
-      <dt>Uscf rating</dt>
-      <dd><%= @chessplayer.uscf_rating %></dd>
-
-      <dt>Fide</dt>
-      <dd><%= @chessplayer.fide_id %></dd>
-
-      <dt>Fide title</dt>
-      <dd><%= @chessplayer.fide_title %></dd>
-
-      <dt>Fide rating</dt>
-      <dd><%= @chessplayer.fide_rating %></dd>
-
-      <dt>Federation</dt>
-      <dd><%= @chessplayer.federation %></dd>
+      <dt>Name</dt>
+      <dd><%= @prospector.name %></dd>
 
     </dl>
 
     <div class="btn-group btn-group-justified">
-      <a href="/chessplayers" class="btn btn-primary">
+      <a href="/prospectors" class="btn btn-primary">
         Back
       </a>
-      <a href="/chessplayers/<%= @chessplayer.id %>/edit" class="btn btn-warning">
+      <a href="/prospectors/<%= @prospector.id %>/edit" class="btn btn-warning">
         Edit
       </a>
-      <a href="/delete_chessplayer/<%= @chessplayer.id %>" class="btn btn-danger" rel="nofollow">
+      <a href="/delete_prospector/<%= @prospector.id %>" class="btn btn-danger" rel="nofollow">
         Delete
       </a>
     </div>
   </div>
 </div>
 
-<!-- A Chessplayer has many comments -->
+<!-- A Prospector has many comments -->
 
 <div class="row">
   <div class="col-md-12">
@@ -72,7 +42,7 @@
         Comments
       </li>
 
-      <% @chessplayer.comments.each do |comment| %>
+      <% @prospector.comments.each do |comment| %>
         <li class="list-group-item">
           <a href="/comments/<%= comment.id %>">
             <%= comment.prospector_id %>
@@ -97,16 +67,16 @@
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
       <!-- Label and input for prospector_id -->
-      <div class="form-group">
-        <label for="prospector_id" class="control-label">
-          Prospector
-        </label>
-
-        <%= select_tag(:prospector_id, options_from_collection_for_select(Prospector.all, :id, :name), :class => "form-control") %>
-      </div>
+      <input type="hidden" name="prospector_id" value="<%= @prospector.id %>">
 
       <!-- Label and input for chessplayer_id -->
-      <input type="hidden" name="chessplayer_id" value="<%= @chessplayer.id %>">
+      <div class="form-group">
+        <label for="chessplayer_id" class="control-label">
+          Chessplayer
+        </label>
+
+        <%= select_tag(:chessplayer_id, options_from_collection_for_select(Chessplayer.all, :id, :id), :class => "form-control") %>
+      </div>
 
       <!-- Label and input for content -->
       <div class="form-group">
