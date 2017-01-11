@@ -24,7 +24,7 @@
           Chessplayer
         </label>
 
-        <%= select_tag(:chessplayer_id, options_from_collection_for_select(Chessplayer.all, :id, :id, @profile.chessplayer_id), :class => "form-control") %>
+        <%= select_tag(:chessplayer_id, options_from_collection_for_select(Chessplayer.all, :id, :last_name, @profile.chessplayer_id), :class => "form-control") %>
       </div>
 
       <!-- Label and input for profile_photo -->

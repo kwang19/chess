@@ -18,7 +18,7 @@
       <dd>
         <% if @comment.chessplayer.present? %>
           <a href="/chessplayers/<%= @comment.chessplayer_id %>">
-            <%= @comment.chessplayer.id %>
+            <%= @comment.chessplayer.last_name %>
           </a>
         <% end %>
       </dd>

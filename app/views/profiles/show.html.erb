@@ -9,7 +9,7 @@
       <dd>
         <% if @profile.chessplayer.present? %>
           <a href="/chessplayers/<%= @profile.chessplayer_id %>">
-            <%= @profile.chessplayer.id %>
+            <%= @profile.chessplayer.last_name %>
           </a>
         <% end %>
       </dd>

@@ -53,7 +53,10 @@
           });
       </script>
 
-        
+        <div class="form-group">
+      <%= f.label :chessplayer_last_name_cont, "Chessplayer last_name contains" %>
+      <%= f.text_field :chessplayer_last_name_cont, :class => "form-control", :placeholder => "Chessplayer last_name contains" %>
+    </div>
 
       <%= f.submit :class => "btn btn-primary btn-block mb-1" %>
 
@@ -87,7 +90,7 @@
         <td>
           <% if comment.chessplayer.present? %>
             <a href="/chessplayers/<%= comment.chessplayer.id %>">
-              <%= comment.chessplayer.id %>
+              <%= comment.chessplayer.last_name %>
             </a>
           <% end %>
         </td>
