@@ -9,7 +9,7 @@
       <dd>
         <% if @prospector.user.present? %>
           <a href="/users/<%= @prospector.user_id %>">
-            <%= @prospector.user.created_at %>
+            <%= @prospector.user.email %>
           </a>
         <% end %>
       </dd>

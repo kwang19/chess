@@ -1,7 +1,7 @@
 class ProspectorsController < ApplicationController
   def index
     @q = Prospector.ransack(params[:q])
-    @prospectors = @q.result(:distinct => true).includes(:user, :comments).page(params[:page]).per(10)
+    @prospectors = @q.result(:distinct => true).includes(:comments, :user).page(params[:page]).per(10)
 
     render("prospectors/index.html.erb")
   end
