@@ -81,9 +81,9 @@
       <% @profiles.each do |profile| %>
       <tr>
         <td>
-          <% if profile.users.present? %>
-            <a href="/chessplayers/<%= profile.users.id %>">
-              <%= profile.users.id %>
+          <% if profile.chessplayer.present? %>
+            <a href="/chessplayers/<%= profile.chessplayer.id %>">
+              <%= profile.chessplayer.id %>
             </a>
           <% end %>
         </td>

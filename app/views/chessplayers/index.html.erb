@@ -167,11 +167,6 @@
       </script>
 
         <div class="form-group">
-      <%= f.label :profile_summary_cont, "Profile summary contains" %>
-      <%= f.text_field :profile_summary_cont, :class => "form-control", :placeholder => "Profile summary contains" %>
-    </div>
-
-<div class="form-group">
           <%= f.label :created_at, "Comment Created at" %>
           <div class="row">
             <div class='col-md-6 mb-1'>
@@ -210,6 +205,11 @@
               });
           });
       </script>
+
+<div class="form-group">
+      <%= f.label :profile_summary_cont, "Profile summary contains" %>
+      <%= f.text_field :profile_summary_cont, :class => "form-control", :placeholder => "Profile summary contains" %>
+    </div>
 
 <div class="form-group">
       <%= f.label :user_email_cont, "User email contains" %>

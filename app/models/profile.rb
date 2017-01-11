@@ -7,9 +7,7 @@ class Profile < ApplicationRecord
              :foreign_key => "profiles_id",
              :dependent => :destroy
 
-  belongs_to :users,
-             :class_name => "Chessplayer",
-             :foreign_key => "chessplayer_id"
+  belongs_to :chessplayer
 
   # Indirect associations
 

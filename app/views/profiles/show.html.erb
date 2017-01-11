@@ -7,9 +7,9 @@
     <dl class="dl-horizontal">
       <dt>Chessplayer</dt>
       <dd>
-        <% if @profile.users.present? %>
+        <% if @profile.chessplayer.present? %>
           <a href="/chessplayers/<%= @profile.chessplayer_id %>">
-            <%= @profile.users.id %>
+            <%= @profile.chessplayer.id %>
           </a>
         <% end %>
       </dd>
