@@ -127,18 +127,6 @@
   </div>
 
 <div class="form-group">
-  <%= f.label :user_id, "User" %>
-  <div class="row">
-    <div class='col-md-6 mb-1'>
-      <%= f.text_field :user_id_gteq, :class => "form-control", :placeholder => "User greater than or equal to" %>
-    </div>
-    <div class='col-md-6'>
-      <%= f.text_field :user_id_lteq, :class => "form-control", :placeholder => "User less than or equal to" %>
-    </div>
-  </div>
-</div>
-
-<div class="form-group">
           <%= f.label :created_at, "Created at" %>
           <div class="row">
             <div class='col-md-6 mb-1'>
@@ -183,6 +171,51 @@
       <%= f.text_field :profile_summary_cont, :class => "form-control", :placeholder => "Profile summary contains" %>
     </div>
 
+<div class="form-group">
+          <%= f.label :created_at, "Comment Created at" %>
+          <div class="row">
+            <div class='col-md-6 mb-1'>
+              <div class='input-group date' id='commentsgteqcreated_atPicker'>
+                  <%= f.text_field :comments_created_at_gteq, :class => "form-control", :placeholder => "Comment Created at greater than or equal to" %>
+                  <span class="input-group-addon">
+                      <span class="glyphicon glyphicon-calendar"></span>
+                  </span>
+              </div>
+            </div>
+
+            <div class='col-md-6'>
+              <div class='input-group date' id='commentslteqcreated_atPicker'>
+                  <%= f.text_field :comments_created_at_lteq, :class => "form-control", :placeholder => "Comment Created at less than or equal to" %>
+                  <span class="input-group-addon">
+                      <span class="glyphicon glyphicon-calendar"></span>
+                  </span>
+              </div>
+            </div>
+          </div>
+      </div>
+      <script type="text/javascript">
+          $(function () {
+              $('#commentsgteqcreated_atPicker').datetimepicker({
+                  format: 'YYYY-MM-DD hh:mm:SS'
+              });
+              $('#commentslteqcreated_atPicker').datetimepicker({
+                  useCurrent: false,
+                  format: 'YYYY-MM-DD hh:mm:SS'
+              });
+              $('#commentsgteqcreated_atPicker').on("dp.change", function (e) {
+                  $('#commentslteqcreated_atPicker').data("DateTimePicker").minDate(e.date);
+              });
+              $('#commentslteqcreated_atPicker').on("dp.change", function (e) {
+                  $('#commentsgteqcreated_atPicker').data("DateTimePicker").maxDate(e.date);
+              });
+          });
+      </script>
+
+<div class="form-group">
+      <%= f.label :user_email_cont, "User email contains" %>
+      <%= f.text_field :user_email_cont, :class => "form-control", :placeholder => "User email contains" %>
+    </div>
+
       <%= f.submit :class => "btn btn-primary btn-block mb-1" %>
 
       <a href="/chessplayers" class="btn btn-default btn-block mb-1">Clear filters</a>
@@ -214,7 +247,13 @@
 
       <% @chessplayers.each do |chessplayer| %>
       <tr>
-        <td><%= chessplayer.user_id %></td>
+        <td>
+          <% if chessplayer.user.present? %>
+            <a href="/users/<%= chessplayer.user.id %>">
+              <%= chessplayer.user.email %>
+            </a>
+          <% end %>
+        </td>
         <td><%= chessplayer.first_name %></td>
         <td><%= chessplayer.last_name %></td>
         <td><%= chessplayer.dob %></td>
@@ -228,8 +267,11 @@
         <td><%= chessplayer.federation %></td>
         <td>
           <a href="/chessplayers/<%= chessplayer.id %>" class="btn btn-primary">Show</a>
-          <a href="/chessplayers/<%= chessplayer.id %>/edit" class="btn btn-warning">Edit</a>
-          <a href="/delete_chessplayer/<%= chessplayer.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+          
+          <% if current_user == chessplayer.user %>
+            <a href="/chessplayers/<%= chessplayer.id %>/edit" class="btn btn-warning">Edit</a>
+            <a href="/delete_chessplayer/<%= chessplayer.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+          <% end %>
         </td>
       </tr>
       <% end %>

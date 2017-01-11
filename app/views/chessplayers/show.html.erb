@@ -6,7 +6,13 @@
   <div class="col-md-12 mb-2">
     <dl class="dl-horizontal">
       <dt>User</dt>
-      <dd><%= @chessplayer.user_id %></dd>
+      <dd>
+        <% if @chessplayer.user.present? %>
+          <a href="/users/<%= @chessplayer.user_id %>">
+            <%= @chessplayer.user.email %>
+          </a>
+        <% end %>
+      </dd>
 
       <dt>First name</dt>
       <dd><%= @chessplayer.first_name %></dd>
@@ -47,12 +53,14 @@
       <a href="/chessplayers" class="btn btn-primary">
         Back
       </a>
-      <a href="/chessplayers/<%= @chessplayer.id %>/edit" class="btn btn-warning">
-        Edit
-      </a>
-      <a href="/delete_chessplayer/<%= @chessplayer.id %>" class="btn btn-danger" rel="nofollow">
-        Delete
-      </a>
+      <% if current_user == @chessplayer.user %>
+        <a href="/chessplayers/<%= @chessplayer.id %>/edit" class="btn btn-warning">
+          Edit
+        </a>
+        <a href="/delete_chessplayer/<%= @chessplayer.id %>" class="btn btn-danger" rel="nofollow">
+          Delete
+        </a>
+      <% end %>
     </div>
   </div>
 </div>
@@ -69,7 +77,7 @@
       <% @chessplayer.comments.each do |comment| %>
         <li class="list-group-item">
           <a href="/comments/<%= comment.id %>">
-            <%= comment.prospector_id %>
+            <%= comment.created_at %>
           </a>
           <div class="btn-group btn-group-xs pull-right">
             <a href="/comments/<%= comment.id %>" class="btn btn-primary">
@@ -90,14 +98,8 @@
       <!-- Hidden input for authenticity token to protect from forgery -->
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
-      <!-- Label and input for prospector_id -->
-      <div class="form-group">
-        <label for="prospector_id" class="control-label">
-          Prospector
-        </label>
-
-        <%= select_tag(:prospector_id, options_from_collection_for_select(Prospector.all, :id, :name), :class => "form-control") %>
-      </div>
+      <!-- Label and input for user_id -->
+      <input type="hidden" name="user_id" value="<%= current_user.id %>">
 
       <!-- Label and input for chessplayer_id -->
       <input type="hidden" name="chessplayer_id" value="<%= @chessplayer.id %>">

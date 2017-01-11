@@ -9,23 +9,6 @@ Rails.application.routes.draw do
   get "/users/:id", :controller => "users", :action => "show"
 
 
-  # Routes for the Prospector resource:
-  # CREATE
-  get "/prospectors/new", :controller => "prospectors", :action => "new"
-  post "/create_prospector", :controller => "prospectors", :action => "create"
-
-  # READ
-  get "/prospectors", :controller => "prospectors", :action => "index"
-  get "/prospectors/:id", :controller => "prospectors", :action => "show"
-
-  # UPDATE
-  get "/prospectors/:id/edit", :controller => "prospectors", :action => "edit"
-  post "/update_prospector/:id", :controller => "prospectors", :action => "update"
-
-  # DELETE
-  get "/delete_prospector/:id", :controller => "prospectors", :action => "destroy"
-  #------------------------------
-
   # Routes for the Comment resource:
   # CREATE
   get "/comments/new", :controller => "comments", :action => "new"
