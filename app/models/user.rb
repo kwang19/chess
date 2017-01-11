@@ -4,9 +4,6 @@ class User < ApplicationRecord
   has_one    :prospector,
              :dependent => :destroy
 
-  has_one    :chessplayer,
-             :dependent => :destroy
-
   # Indirect associations
 
   # Validations

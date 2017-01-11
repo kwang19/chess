@@ -1,8 +1,6 @@
 class Chessplayer < ApplicationRecord
   # Direct associations
 
-  belongs_to :user
-
   has_many   :comments,
              :dependent => :destroy
 
