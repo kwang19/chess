@@ -267,11 +267,8 @@
         <td><%= chessplayer.federation %></td>
         <td>
           <a href="/chessplayers/<%= chessplayer.id %>" class="btn btn-primary">Show</a>
-          
-          <% if current_user == chessplayer.user %>
-            <a href="/chessplayers/<%= chessplayer.id %>/edit" class="btn btn-warning">Edit</a>
-            <a href="/delete_chessplayer/<%= chessplayer.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
-          <% end %>
+          <a href="/chessplayers/<%= chessplayer.id %>/edit" class="btn btn-warning">Edit</a>
+          <a href="/delete_chessplayer/<%= chessplayer.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
         </td>
       </tr>
       <% end %>

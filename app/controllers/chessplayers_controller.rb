@@ -1,14 +1,4 @@
 class ChessplayersController < ApplicationController
-  before_action :current_user_must_be_chessplayer_user, :only => [:edit, :update, :destroy]
-
-  def current_user_must_be_chessplayer_user
-    chessplayer = Chessplayer.find(params[:id])
-
-    unless current_user == chessplayer.user
-      redirect_to :back, :alert => "You are not authorized for that."
-    end
-  end
-
   def index
     @q = Chessplayer.ransack(params[:q])
     @chessplayers = @q.result(:distinct => true).includes(:comments, :profile, :user).page(params[:page]).per(10)
@@ -69,6 +59,8 @@ class ChessplayersController < ApplicationController
 
   def update
     @chessplayer = Chessplayer.find(params[:id])
+
+    @chessplayer.user_id = params[:user_id]
     @chessplayer.first_name = params[:first_name]
     @chessplayer.last_name = params[:last_name]
     @chessplayer.dob = params[:dob]
