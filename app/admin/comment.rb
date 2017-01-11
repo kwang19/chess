@@ -1,6 +1,6 @@
 ActiveAdmin.register Comment do
 
- permit_params :prospector_id, :chessplayer_id, :content
+ permit_params :user_id, :chessplayer_id, :content
 
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
