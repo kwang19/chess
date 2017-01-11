@@ -1,7 +1,10 @@
 class User < ApplicationRecord
   # Direct associations
 
-  has_many   :comments,
+  has_one    :prospector,
+             :dependent => :destroy
+
+  has_one    :chessplayer,
              :dependent => :destroy
 
   # Indirect associations

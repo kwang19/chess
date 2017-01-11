@@ -1,17 +1,7 @@
 class CommentsController < ApplicationController
-  before_action :current_user_must_be_comment_user, :only => [:edit, :update, :destroy]
-
-  def current_user_must_be_comment_user
-    comment = Comment.find(params[:id])
-
-    unless current_user == comment.user
-      redirect_to :back, :alert => "You are not authorized for that."
-    end
-  end
-
   def index
     @q = Comment.ransack(params[:q])
-    @comments = @q.result(:distinct => true).includes(:chessplayer, :user).page(params[:page]).per(10)
+    @comments = @q.result(:distinct => true).includes(:chessplayer, :prospector).page(params[:page]).per(10)
 
     render("comments/index.html.erb")
   end
@@ -31,8 +21,9 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new
 
-    @comment.user_id = params[:user_id]
+    @comment.prospector_id = params[:prospector_id]
     @comment.chessplayer_id = params[:chessplayer_id]
+    @comment.content = params[:content]
 
     save_status = @comment.save
 
@@ -58,7 +49,10 @@ class CommentsController < ApplicationController
 
   def update
     @comment = Comment.find(params[:id])
+
+    @comment.prospector_id = params[:prospector_id]
     @comment.chessplayer_id = params[:chessplayer_id]
+    @comment.content = params[:content]
 
     save_status = @comment.save
 
