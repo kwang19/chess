@@ -9,7 +9,7 @@
       <dd>
         <% if @chessplayer.user.present? %>
           <a href="/users/<%= @chessplayer.user_id %>">
-            <%= @chessplayer.user.email %>
+            <%= @chessplayer.user.id %>
           </a>
         <% end %>
       </dd>
@@ -102,7 +102,7 @@
           User
         </label>
 
-        <%= select_tag(:user_id, options_from_collection_for_select(User.all, :id, :email), :class => "form-control") %>
+        <%= select_tag(:user_id, options_from_collection_for_select(User.all, :id, :id), :class => "form-control") %>
       </div>
 
       <!-- Label and input for chessplayer_id -->
